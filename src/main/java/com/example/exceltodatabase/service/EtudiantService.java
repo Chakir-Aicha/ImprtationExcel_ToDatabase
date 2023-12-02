@@ -56,6 +56,7 @@ public class EtudiantService {
                 etudiant.setDate_naissance(row.getCell(3).getDateCellValue());
                 etudiant.setNote((float) row.getCell(4).getNumericCellValue());
                 etudiant.setMention(row.getCell(5).getStringCellValue());
+                //gérer l'erreur de duplication de la clé primaire
                 Etudiant existingEtudiant = etudiantRepository.findByCNE(etudiant.getCNE());
                 if (existingEtudiant != null) {
                     errors.add(new Error(row.getRowNum() , "Duplication de clé primaire - CNE " + etudiant.getCNE() + " déjà existant."));
